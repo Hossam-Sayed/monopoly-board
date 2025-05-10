@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Colors */
+
+.red {
+    background: #f50c2b;
+}
+
+.brown {
+    background: #640303;
+}
+
+.light-blue {
+    background: #d2eaf5;
+}
+
+.purple {
+    background: #b02f7c;
+}
+
+.orange {
+    background: #fa811d;
+}
+
+.red {
+    background: #f50c2b;
+}
+
+.yellow {
+    background: #ffed20;
+}
+
+.green {
+    background: #41994e;
+}
+
+.dark-blue {
+    background: #5a6dba;
+}
+
+/* Layout */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 1fr repeat(9, 0.64fr) 1fr;
+    grid-template-rows: 1fr repeat(9, 0.64fr) 1fr;
+    gap: 1px;
+    width: 90vw;
+    height: 90vw;
+    max-width: 90vmin;
+    max-height: 90vmin;
+    margin: auto;
+    background: #000;
+    border: 1px solid #000;
+}
+
+.center {
+    display: grid;
+    grid-column: 2 / 11;
+    grid-row: 2 / 11;
+    background: #fff;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Rows & Columns */
+
+.row {
+    grid-gap: 1px;
+}
+
+.bottom-row {
+    grid-column: 2 / 11;
+    grid-row: 11;
+}
+
+.left-column {
+    grid-column: 1;
+    grid-row: 2 / 11;
+}
+
+.top-row {
+    grid-column: 2 / 11;
+    grid-row: 1;
+}
+
+.right-column {
+    grid-column: 11;
+    grid-row: 2 / 11;
+}
+
+.left-column .cell-container {
+    flex-direction: row-reverse;
+}
+
+.right-column .cell-container {
+    flex-direction: row;
+}
+
+.top-row .cell-container {
+    flex-direction: column-reverse;
+}
+
+/* Spaces */
+
+.monopoly-tile {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    text-align: center;
+    min-width: 0;
+    min-height: 0;
+}
+
+.cell-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.color-bar {
+    height: 25%;
+    width: 100%;
+    min-height: 10px;
+    flex-shrink: 0;
+}
+
+.left-column .color-bar,
+.right-column .color-bar {
+    width: 25%;
+    height: 100%;
+}
+
+.left-column .color-bar {
+    border-left: 1px solid #000;
+}
+
+.right-column .color-bar {
+    border-right: 1px solid #000;
+}
+
+.top-row .color-bar {
+    border-top: 1px solid #000;
+}
+
+.bottom-row .color-bar {
+    border-bottom: 1px solid #000;
+}
+
+.corner {
+    width: 100%;
+    background-color: #fff;
+}
