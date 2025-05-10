@@ -2,42 +2,38 @@
     box-sizing: border-box;
 }
 
-/* Colors */
+/* Color Classes */
 
-.red {
-    background: #f50c2b;
+.monopoly-tile.red {
+    color: #f50c2b;
 }
 
-.brown {
-    background: #640303;
+.monopoly-tile.brown {
+    color: #640303;
 }
 
-.light-blue {
-    background: #d2eaf5;
+.monopoly-tile.light-blue {
+    color: #d2eaf5;
 }
 
-.purple {
-    background: #b02f7c;
+.monopoly-tile.purple {
+    color: #b02f7c;
 }
 
-.orange {
-    background: #fa811d;
+.monopoly-tile.orange {
+    color: #fa811d;
 }
 
-.red {
-    background: #f50c2b;
+.monopoly-tile.yellow {
+    color: #ffed20;
 }
 
-.yellow {
-    background: #ffed20;
+.monopoly-tile.green {
+    color: #41994e;
 }
 
-.green {
-    background: #41994e;
-}
-
-.dark-blue {
-    background: #5a6dba;
+.monopoly-tile.dark-blue {
+    color: #5a6dba;
 }
 
 /* Layout */
@@ -69,12 +65,9 @@ body {
 }
 
 .center {
-    display: grid;
     grid-column: 2 / 11;
     grid-row: 2 / 11;
     background: #fff;
-    justify-items: center;
-    align-items: center;
 }
 
 /* Rows & Columns */
@@ -103,56 +96,56 @@ body {
     grid-row: 2 / 11;
 }
 
-.left-column .monopoly-tile {
-    flex-direction: row-reverse;
-}
-
-.right-column .monopoly-tile {
-    flex-direction: row;
-}
-
-.top-row .monopoly-tile {
-    flex-direction: column-reverse;
-}
-
-/* Spaces */
+/* Monopoly Tile */
 
 .monopoly-tile {
-    display: flex;
+    position: relative;
     aspect-ratio: 1 / 1;
     width: 100%;
     height: auto;
     background: #fff;
-    text-align: center;
     min-width: 0;
     min-height: 0;
 }
 
-.color-bar {
-    height: 25%;
-    width: 100%;
-    min-height: 10px;
-    flex-shrink: 0;
+/* Pseudo color bar */
+
+.monopoly-tile.property::before {
+    content: "";
+    position: absolute;
+    background-color: currentColor;
 }
 
-.left-column .color-bar,
-.right-column .color-bar {
+/* Row-based direction and bar placement */
+
+.top-row .monopoly-tile::before,
+.bottom-row .monopoly-tile::before {
+    height: 25%;
+    width: 100%;
+}
+
+.left-column .monopoly-tile::before,
+.right-column .monopoly-tile::before {
     width: 25%;
     height: 100%;
 }
 
-.left-column .color-bar {
-    border-left: 1px solid #000;
-}
-
-.right-column .color-bar {
-    border-right: 1px solid #000;
-}
-
-.top-row .color-bar {
+.top-row .monopoly-tile::before {
+    bottom: 0;
     border-top: 1px solid #000;
 }
 
-.bottom-row .color-bar {
+.bottom-row .monopoly-tile::before {
+    top: 0;
     border-bottom: 1px solid #000;
+}
+
+.left-column .monopoly-tile::before {
+    right: 0;
+    border-left: 1px solid #000;
+}
+
+.right-column .monopoly-tile::before {
+    left: 0;
+    border-right: 1px solid #000;
 }
